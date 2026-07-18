@@ -24,18 +24,32 @@ class ONNXManager:
             self.ort = None
             self.providers = []
 
-    def register_model(self, name: str, onnx_path: str):
+    def register_model(self, name: str, repo_id: str = None, filename: str = "weights/best.onnx", local_path: str = None):
         """
-        모델의 경로만 등록합니다. 메모리(RAM)에 미리 올리지 않습니다.
+        허깅페이스 모델 레지스트리에서 다운로드(캐싱)하거나, 로컬 경로를 직접 등록합니다.
+        메모리(RAM)에 미리 올리지는 않습니다.
         """
-        if not os.path.exists(onnx_path):
-            print(f"Warning: ONNX file not found: {onnx_path}")
+        actual_path = local_path
+        
+        if repo_id:
+            try:
+                from huggingface_hub import hf_hub_download
+                print(f"Resolving model {name} from HuggingFace ({repo_id})...")
+                # 이 함수는 최초 1회만 다운로드하며, 이후에는 ~/.cache/huggingface 경로의 파일을 즉시 반환합니다.
+                actual_path = hf_hub_download(repo_id=repo_id, filename=filename)
+            except Exception as e:
+                print(f"Error downloading {name} from HuggingFace: {e}")
+                return False
+                
+        if not actual_path or not os.path.exists(actual_path):
+            print(f"Warning: ONNX file not found: {actual_path}")
             return False
             
         self.models[name] = {
-            'path': onnx_path,
+            'path': actual_path,
             'session': None
         }
+        print(f"Registered {name} -> {actual_path}")
         return True
 
     def load_to_gpu(self, name: str):
