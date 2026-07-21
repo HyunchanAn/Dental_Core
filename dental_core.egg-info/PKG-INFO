@@ -1,0 +1,13 @@
+Metadata-Version: 2.4
+Name: dental_core
+Version: 0.1.0
+Summary: Core utilities and common modules for the Dental project.
+Author: Hyunchan An
+Requires-Python: >=3.9
+Requires-Dist: numpy
+Requires-Dist: opencv-python
+Requires-Dist: matplotlib
+Dynamic: author
+Dynamic: requires-dist
+Dynamic: requires-python
+Dynamic: summary
