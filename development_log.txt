@@ -1,0 +1,19 @@
+2026-07-19
+- 전 모듈 공통 유틸리티 라이브러리(`Dental_Core`) 초기 구축 완료.
+- `Dental_002` 및 `Dental_Panoramic_Reader`로부터 공통 기하학(`geometry.py`), 영상 전처리(`image.py`), 시각화(`viz.py`) 유틸리티 적출 완료.
+- 범용 PyTorch-to-ONNX 변환기(`onnx_exporter.py`), Hugging Face 캐시 연동 최적화 ONNX 세션 매니저(`onnx_manager.py`) 및 `setup.py` 패키징 구현 완료.
+
+2026-07-21
+- 중앙 재사용 CI 워크플로우(`reusable-ci.yml`) 마이그레이션 완료.
+
+2026-08-17
+- 연구 보안 및 저장소 위생 베이스라인 적용 완료.
+
+2026-10-20
+- 이슈 #2 해결: 16비트-8비트 윈도잉 및 PHI 익명화를 지원하는 DICOM/의료영상 로더(`dental_core/io/dicom.py`), 표준 로거(`dental_core/utils/logging.py`), 디바이스 및 ONNX Execution Provider 선택 유틸리티(`dental_core/utils/device.py`), 단위 테스트(`tests/test_dental_core.py`), GitHub Actions CI(`.github/workflows/ci.yml`), MIT `LICENSE` 및 클린 UTF-8 `README.md` 구축 완료 (`v0.1.0` 태그 배포).
+
+2026-10-21
+- 이슈 #3 해결: 저장소 내 Windows 바이너리(`gitleaks.exe`), `egg-info`, `__pycache__` 및 레거시 일괄 커밋 스크립트 추적 제거 완료.
+
+2026-10-25
+- 전 시리즈 표준 양식(`YYYY-MM-DD` 헤더 및 하이픈 불릿)에 맞춘 루트 `development_log.txt` 구축 및 정돈 완료.
