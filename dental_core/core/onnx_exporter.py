@@ -1,5 +1,4 @@
 import os
-import torch
 
 def export_yolov8_to_onnx(model_path, output_dir=None, dynamic=True):
     """

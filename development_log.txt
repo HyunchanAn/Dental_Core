@@ -17,3 +17,6 @@
 
 2026-10-25
 - 전 시리즈 표준 양식(`YYYY-MM-DD` 헤더 및 하이픈 불릿)에 맞춘 루트 `development_log.txt` 구축 및 정돈 완료.
+
+2026-10-28
+- 이슈 #5 해결: `dental_core/core/onnx_exporter.py` 최상단 `import torch`를 제거하고 함수 내부 지연 임포트로 일원화하여 경량 환경(PyTorch 미설치 상태)에서의 `dental_core` 패키지 임포트 및 원격 GitHub Actions CI 통과 완료.
